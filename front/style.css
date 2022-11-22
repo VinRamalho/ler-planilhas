@@ -1,0 +1,267 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  margin-top: 1%;
+  /* height: 700px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tabelas {
+  display: flex;
+}
+
+.error {
+  font-weight: 900 !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: rgb(221, 32, 32);
+  border-radius: 13px;
+  border: 2px solid rgb(221, 32, 32);
+  border-radius: 13px;
+  margin-bottom: 15px;
+  padding: 4px;
+  cursor: default;
+  -webkit-touch-callout: none; /* iPhone OS, Safari */
+  -webkit-user-select: none; /* Chrome, Safari 3 */
+  -khtml-user-select: none; /* Safari 2 */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
+}
+
+.sucess {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: rgb(25, 135, 84);
+  border-radius: 13px;
+  border: 2px solid rgb(22 118 74);
+  margin-bottom: 15px;
+  padding: 5px 2px;
+  cursor: default;
+  -webkit-touch-callout: none; /* iPhone OS, Safari */
+  -webkit-user-select: none; /* Chrome, Safari 3 */
+  -khtml-user-select: none; /* Safari 2 */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
+}
+
+#env {
+  margin: 2% 0;
+  animation: up 1s;
+}
+
+#upload {
+  animation: up 1s;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300);
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+:root {
+  --bg: #130f0d;
+  --orange: #fd951f;
+  --brown-opaque: rgba(250, 152, 5, 0.139);
+  --white: #f0f0f9;
+  --green: hsl(98 100% 62%);
+  --blue: hsl(204 100% 59%);
+  --purple: #8257e6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+button,
+input {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  color: var(--white);
+  align-items: center;
+  background-color: rgba(255, 250, 240, 0.178) !important;
+}
+
+header {
+  cursor: default;
+  -webkit-touch-callout: none; /* iPhone OS, Safari */
+  -webkit-user-select: none; /* Chrome, Safari 3 */
+  -khtml-user-select: none; /* Safari 2 */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none; /* Possível implementação no futuro */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4rem;
+  text-align: center;
+  color: var(--orange);
+  animation: up 0.4s;
+}
+
+tr {
+  animation: up 1s;
+}
+
+td {
+  animation: up 1s;
+}
+
+table {
+  animation: up 1s;
+}
+
+tbody {
+  animation: up 1s;
+}
+
+h1 {
+  cursor: default;
+  -webkit-touch-callout: none; /* iPhone OS, Safari */
+  -webkit-user-select: none; /* Chrome, Safari 3 */
+  -khtml-user-select: none; /* Safari 2 */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none; /* Possível implementação no futuro */
+  color: var(--orange);
+  animation: up 0.4s;
+}
+
+span {
+  animation: up 1s;
+}
+
+button {
+  animation: up 1s;
+}
+
+header p {
+  font-family: monospace;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 3.2rem 0 1.6rem;
+  animation: up 0.4s 0.4s backwards;
+}
+
+footer::after {
+  content: "Feito pela engenharia da Nipponsat Solutions";
+  opacity: 0.6;
+  font-size: 0.8rem;
+}
+
+input {
+  background-color: #333;
+  border: 3px solid #fd951f;
+  border-radius: 0.4rem;
+  color: #faebd7;
+}
+
+input:focus {
+  border: 3px solid #b66100;
+  outline: 0;
+}
+
+.loadingCenter {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 2% 0;
+}
+
+.spinner-grow {
+  background-color: #fd951f !important;
+}
+
+#bntConsulta {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 150px;
+}
+
+table {
+  width: 500px;
+  background-color: #fff;
+  border-collapse: collapse;
+}
+
+th {
+  position: sticky;
+  top: 0px;
+}
+
+thead {
+  position: sticky;
+  top: 0px;
+}
+
+td {
+  box-shadow: inset 0 0 0 1px green;
+}
+
+.tableConsulta {
+  height: 60em;
+  overflow: auto;
+  position: sticky;
+  top: 15px;
+}
+
+#btnLimpar {
+  position: fixed;
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 150px;
+}
+
+.modal-title {
+  font-weight: 900 !important;
+  color: rgb(221, 32, 32);
+}
+
+@media screen and (max-width: 768px) {
+  #bntConsulta {
+    top: auto;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  #btnLimpar {
+    top: auto;
+    position: fixed;
+    bottom: 70px;
+  }
+
+  .tableConsulta {
+    height: 40em;
+  }
+
+  .offcanvas {
+    --bs-offcanvas-width: 330px !important;
+  }
+}
