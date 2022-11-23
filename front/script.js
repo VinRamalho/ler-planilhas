@@ -248,7 +248,7 @@ const apagaTabela = async () => {
     }
 }
 
-
+// ESSA FUNCAO, DEPOIS DE ROLAR 100 PIXELS PRA BAIXO CHAM A FUNCAO (scrollToTop)
 $(function () {
     $(document).on('scroll', function () {
         if ($(window).scrollTop() > 100) {
@@ -260,14 +260,14 @@ $(function () {
     $('.smoothscroll-top').on('click', scrollToTop);
 });
 
-function scrollToTop() {
+// ESSA FUNCAO MOSTRA O BOTAO DE VOLTAR PRA CIMA DE NOVO
+const scrollToTop = () => {
     verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
     element = $('body');
     offset = element.offset();
     offsetTop = offset.top;
     $('html, body').animate({ scrollTop: 50 }, 100).animate({ scrollTop: 0 }, 50);
 }
-
 
 // ESSE EVENTO NO INPUT, ASSIM UQE SUBIR UM ARQUIVO CHAMA A FUNCAO selecaoDeArquivo.
 document.getElementById('upload').addEventListener('change', selecaoDeArquivo);
