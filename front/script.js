@@ -41,7 +41,7 @@ const ocultarCarregandoConsulta = () => {
     loadingConsulta.classList.remove("spinner-grow");
 }
 
-// ESSA CLASSE LÊ UMA PLANILHA DE EXCEL "XLS" E TRANFORMA TODO O CONTEUDO EM UM JSON. INSERINDO OS CAMPOS DESEJADOS NOS ARRAYS.
+// ESSA CLASSE LÊ UMA PLANILHA DE EXCEL E TRANFORMA TODO O CONTEUDO EM UM JSON. INSERINDO OS CAMPOS DESEJADOS NOS ARRAYS.
 const ExcelToJSON = function () {
     this.parseExcel = function (file) {
         let reader = new FileReader();
@@ -136,7 +136,7 @@ const enviaDados = () => {
     $('#loading').addClass("spinner-grow");
     $.ajax({
         crossDomain: true,
-        url: "http://192.168.1.203:8000/api/file",
+        url: "http://192.168.100.155:8000/api/file",
         type: "GET",
         dataType: "json",
         data: pegarDados(),
@@ -175,7 +175,8 @@ const consultaTabela = async () => {
         mostrarCarregandoConsulta()
         document.getElementById("table1Consulta").innerText = "";
         document.getElementById("table2Consulta").innerText = "";
-        const result = await fetch(`http://192.168.1.203:8000/api/getall`);
+        // const result = await fetch(`http://192.168.1.203:8000/api/getall`);
+        const result = await fetch(`http://192.168.100.155:8000/api/getall`);
         const data = await result.json();
         preencheConsulta(data)
         ocultarCarregandoConsulta();
@@ -219,7 +220,7 @@ const preencheConsulta = async (data) => {
 const apagaTabela = async () => {
     try {
         mostrarCarregando()
-        const data = await fetch('http://192.168.1.203:8000/api/deleteFile')
+        const data = await fetch('http://192.168.100.155:8000/api/deleteFile')
             .then(data => {
                 return data.json();
             })
