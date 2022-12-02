@@ -63,7 +63,7 @@ const ExcelToJSON = function () {
                     arr2.push(dataColuns[i].quantidade)
                 }
                 if (dataColuns.length >= 501) {
-                    alert('ERRO: A TABELA ENVIA NO MAXIMO 500 LINHAS POR VEZ')
+                    alert('ERRO: A TABELA SÓ ENVIA NO MAXIMO 500 LINHAS POR VEZ')
                 }
             });
         };
