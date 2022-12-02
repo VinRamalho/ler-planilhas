@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('planilha', function (Blueprint $table) {
             // $table->increments('id');
-            $table->integer('dados1');
-            $table->integer('dados2');
+            $table->string('dados1');
+            $table->string('dados2');
             // $table->timestamps();
         });
     }
