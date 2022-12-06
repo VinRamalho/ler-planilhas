@@ -296,3 +296,32 @@ document.addEventListener('DOMContentLoaded', (e) => {
         tabela.style.height = height - 150 + "px";
     }
 })
+
+
+// <-- EXEMPLOS PARA USO DE localStorage -->
+
+// let myObj1 = { 'name': 'Gabriel', 'age': 25 };
+// let myObj2 = { 'name': 'Patrick', 'age': 38 };
+// let myObj3 = { 'name': 'Moacir', 'age': 56 };
+// let myObj4 = { 'name': 'Paty', 'age': 23 };
+// let myObj5 = { 'name': 'Logan', 'age': 30 };
+
+
+// localStorage.setItem("pessoa1", JSON.stringify(myObj1));
+// localStorage.setItem("pessoa2", JSON.stringify(myObj2));
+// localStorage.setItem("pessoa3", JSON.stringify(myObj3));
+// localStorage.setItem("pessoa4", JSON.stringify(myObj4));
+// localStorage.setItem("pessoa5", JSON.stringify(myObj5));
+
+
+
+// let pessoa1 = JSON.parse(localStorage.getItem("pessoa1"))
+// let pessoa2 = JSON.parse(localStorage.getItem("pessoa2"))
+
+
+// for (let i = 0; i < localStorage.length; i++) {
+//     let key = localStorage.key(i);
+//     let value = localStorage.getItem(key);
+//     console.log(JSON.parse(value));
+//     console.log("");
+// }
