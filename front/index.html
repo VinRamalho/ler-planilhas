@@ -8,7 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
-    <link rel="stylesheet" href="style.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script
@@ -31,6 +30,8 @@
     />
     <!-- TITLE ICON -->
     <link rel="icon" type="image/jpg" href="./images/logoHeader.png" />
+    <link rel="stylesheet" href="style.css" />
+
     <title>Leitor de planilha</title>
   </head>
 
@@ -45,8 +46,6 @@
           </div>
         </div>
       </header>
-
-      <span id="msg"></span>
 
       <form enctype="multipart/form-data">
         <input
@@ -92,7 +91,7 @@
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
     >
-      Limpar tabela
+      Apagar tabela
     </button>
     <!-- Modal -->
     <div
@@ -188,7 +187,38 @@
         </div>
       </div>
     </div>
+
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="liveToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <img
+            draggable="false"
+            style="width: 20px"
+            src="./images/logoHeader.png"
+            class="rounded me-2"
+            alt="Logo"
+          />
+          <strong class="me-auto">Nipponsat</strong>
+          <small id="time">agora</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div id="msg" class="toast-body"></div>
+      </div>
+    </div>
+
     <div class="smoothscroll-top">
       <span class="scroll-top-inner">
         <i class="fa fa-2x fa-arrow-circle-up"></i>

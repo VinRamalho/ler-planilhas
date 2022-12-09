@@ -47,7 +47,7 @@ class TableController extends Controller
 
         if ($res) {
             return response()->json([
-                "message" => "Tabela limpa com sucesso"
+                "message" => "Tabela apagada com sucesso"
             ]);
         }
         else {

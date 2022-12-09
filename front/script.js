@@ -5,6 +5,8 @@ const base = document.getElementById('base');
 const msg = document.getElementById('msg');
 const btnConsulta = document.getElementById('bntConsulta');
 const btnLimpar = document.getElementById('btnApagarTabela');
+const toastTrigger = document.getElementById('liveToastBtn');
+const toastLiveExample = document.getElementById('liveToast');
 document.getElementById("env").disabled = true;
 
 // DECLARACAO DE ARRAYS VAZIOS.
@@ -63,7 +65,19 @@ const ExcelToJSON = function () {
                     arr2.push(dataColuns[i].quantidade)
                 }
                 if (dataColuns.length >= 501) {
-                    alert('ERRO: A TABELA SÓ ENVIA NO MAXIMO 500 LINHAS POR VEZ')
+                    setTimeout(() => {
+                        const toast = new bootstrap.Toast(toastLiveExample)
+                        msg.classList.remove('sucess')
+                        msg.classList.add('error')
+                        document.getElementById('msg').innerText = "ERRO: A TABELA SÓ ENVIA NO MAXIMO 500 LINHAS POR VEZ"
+                        toast.show(5000)
+                        setInterval(() => {
+                            setTime++
+                            document.getElementById('time').innerText = `${setTime} min`
+                        }, 60000)
+                        arr1 = [];
+                        arr2 = [];
+                    })
                 }
             });
         };
@@ -100,9 +114,6 @@ const imprimeNaTela = () => {
         tr2.appendChild(liArray2)
     }
     saveBtn.disabled = false;
-    msg.classList.remove('sucess')
-    msg.classList.remove('error')
-    msg.innerText = "";
     ocultarCarregando();
 }
 
@@ -149,27 +160,47 @@ const enviaDados = () => {
             // console.log(response);
             mostrarCarregando()
             if (response.message === "Dados arquivados com sucesso") {
-                msg.innerText = "Dados Salvos com sucesso"
                 msg.classList.remove('error')
                 msg.classList.add('sucess')
                 saveBtn.disabled = true;
+                setTimeout(() => {
+                    const toast = new bootstrap.Toast(toastLiveExample)
+                    msg.innerText = "Dados Salvos com sucesso"
+                    toast.show(5000)
+                    setInterval(() => {
+                        setTime++
+                        document.getElementById('time').innerText = `${setTime} min`
+                    }, 60000)
+                }, 500)
             } else {
                 msg.classList.remove('sucess')
                 msg.classList.add('error')
-                msg.innerText = "ERRO dados NÃO enviados"
+                setTimeout(() => {
+                    const toast = new bootstrap.Toast(toastLiveExample)
+                    msg.innerText = "ERRO dados NÃO enviados"
+                    toast.show(5000)
+                    setInterval(() => {
+                        setTime++
+                        document.getElementById('time').innerText = `${setTime} min`
+                    }, 60000)
+                }, 500)
             }
             ocultarCarregando();
         })
         .fail(function (error) {
             console.log(error);
-            alert('API NÃO RESPONDE');
+            // alert('API NÃO RESPONDE');
+            setTimeout(() => {
+                const toast = new bootstrap.Toast(toastLiveExample)
+                document.getElementById('msg').innerText = "API NÃO RESPONDE"
+                toast.show(5000)
+                setInterval(() => {
+                    setTime++
+                    document.getElementById('time').innerText = `${setTime} min`
+                }, 60000)
+            }, 500)
             ocultarCarregando();
         });
-    setTimeout(() => {
-        msg.classList.remove('error')
-        msg.classList.remove('sucess')
-        msg.innerText = ""
-    }, 3000)
 };
 
 // ESSA FUNCAO BUSCA TODO O CONTEUDO DA TABELA. TRATA ERRO OU TABELA VAZIA. E MANDA PARA A FUNCAO DE IMPRIMIR NA TABELA
@@ -178,16 +209,35 @@ const consultaTabela = async () => {
         mostrarCarregandoConsulta()
         document.getElementById("table1Consulta").innerText = "";
         document.getElementById("table2Consulta").innerText = "";
-        // const result = await fetch(`http://192.168.1.203:8000/api/getall`);
         const result = await fetch(`http://192.168.100.155:8000/api/getall`);
         const data = await result.json();
         preencheConsulta(data)
         ocultarCarregandoConsulta();
         if (data.length == 0) {
-            alert('A TABELA ESTA VAZIA')
+            // alert('A TABELA ESTA VAZIA')
+            msg.classList.remove('sucess')
+            msg.classList.remove('error')
+            setTimeout(() => {
+                const toast = new bootstrap.Toast(toastLiveExample)
+                document.getElementById('msg').innerText = "A TABELA ESTA VAZIA"
+                toast.show(5000)
+                setInterval(() => {
+                    setTime++
+                    document.getElementById('time').innerText = `${setTime} min`
+                }, 60000)
+            }, 500)
         }
     } catch {
-        alert('API NÃO RESPONDE')
+        // alert('API NÃO RESPONDE')
+        setTimeout(() => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+            document.getElementById('msg').innerText = "API NÃO RESPONDE"
+            toast.show(5000)
+            setInterval(() => {
+                setTime++
+                document.getElementById('time').innerText = `${setTime} min`
+            }, 60000)
+        }, 500)
     }
 }
 
@@ -228,27 +278,49 @@ const apagaTabela = async () => {
                 return data.json();
             })
         const dataJson = await data;
-        if (dataJson.message === "Tabela limpa com sucesso") {
-            msg.innerText = dataJson.message;
-            msg.classList.remove('sucess');
-            msg.classList.add('error');
+        if (dataJson.message === "Tabela apagada com sucesso") {
             document.getElementById("table1").innerText = "";
             document.getElementById("table2").innerText = "";
             document.getElementById('btnClose').click();
+            setTimeout(() => {
+                msg.classList.remove('sucess');
+                msg.classList.add('error');
+                const toast = new bootstrap.Toast(toastLiveExample)
+                msg.innerText = dataJson.message;
+                toast.show(5000)
+                setInterval(() => {
+                    setTime++
+                    document.getElementById('time').innerText = `${setTime} min`
+                }, 60000)
+            }, 500)
         } else {
             msg.classList.remove('error');
             msg.classList.add('sucess');
-            msg.innerText = "A tabela NÃO foi limpa. ERRO";
+            setTimeout(() => {
+                msg.classList.remove('sucess');
+                msg.classList.add('error');
+                const toast = new bootstrap.Toast(toastLiveExample)
+                msg.innerText = "ERRO: A tabela NÃO foi limpa.";
+                toast.show(5000)
+                setInterval(() => {
+                    setTime++
+                    document.getElementById('time').innerText = `${setTime} min`
+                }, 60000)
+            }, 500)
         }
         ocultarCarregando()
-        setTimeout(() => {
-            msg.classList.remove('error')
-            msg.classList.remove('sucess');
-            msg.innerText = "";
-        }, 3000)
     } catch {
         document.getElementById('btnClose').click();
         alert('API NÃO RESPONDE');
+        setTimeout(() => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+            document.getElementById('msg').innerText = "API NÃO RESPONDE"
+            toast.show(5000)
+            setInterval(() => {
+                setTime++
+                document.getElementById('time').innerText = `${setTime} min`
+            }, 60000)
+        }, 500)
     }
 }
 
