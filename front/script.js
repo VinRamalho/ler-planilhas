@@ -8,6 +8,7 @@ const btnLimpar = document.getElementById('btnApagarTabela');
 const toastTrigger = document.getElementById('liveToastBtn');
 const toastLiveExample = document.getElementById('liveToast');
 document.getElementById("env").disabled = true;
+let setTime = 0;
 
 // DECLARACAO DE ARRAYS VAZIOS.
 let arr1 = [];
@@ -66,6 +67,7 @@ const ExcelToJSON = function () {
                 }
                 if (dataColuns.length >= 501) {
                     setTimeout(() => {
+                        setTime = 0;
                         const toast = new bootstrap.Toast(toastLiveExample)
                         msg.classList.remove('sucess')
                         msg.classList.add('error')
@@ -164,6 +166,7 @@ const enviaDados = () => {
                 msg.classList.add('sucess')
                 saveBtn.disabled = true;
                 setTimeout(() => {
+                    setTime = 0;
                     const toast = new bootstrap.Toast(toastLiveExample)
                     msg.innerText = "Dados Salvos com sucesso"
                     toast.show(5000)
@@ -176,6 +179,7 @@ const enviaDados = () => {
                 msg.classList.remove('sucess')
                 msg.classList.add('error')
                 setTimeout(() => {
+                    setTime = 0;
                     const toast = new bootstrap.Toast(toastLiveExample)
                     msg.innerText = "ERRO dados NÃO enviados"
                     toast.show(5000)
@@ -191,6 +195,7 @@ const enviaDados = () => {
             console.log(error);
             // alert('API NÃO RESPONDE');
             setTimeout(() => {
+                setTime = 0;
                 const toast = new bootstrap.Toast(toastLiveExample)
                 document.getElementById('msg').innerText = "API NÃO RESPONDE"
                 toast.show(5000)
@@ -218,6 +223,7 @@ const consultaTabela = async () => {
             msg.classList.remove('sucess')
             msg.classList.remove('error')
             setTimeout(() => {
+                setTime = 0;
                 const toast = new bootstrap.Toast(toastLiveExample)
                 document.getElementById('msg').innerText = "A TABELA ESTA VAZIA"
                 toast.show(5000)
@@ -230,6 +236,7 @@ const consultaTabela = async () => {
     } catch {
         // alert('API NÃO RESPONDE')
         setTimeout(() => {
+            setTime = 0;
             const toast = new bootstrap.Toast(toastLiveExample)
             document.getElementById('msg').innerText = "API NÃO RESPONDE"
             toast.show(5000)
@@ -283,6 +290,7 @@ const apagaTabela = async () => {
             document.getElementById("table2").innerText = "";
             document.getElementById('btnClose').click();
             setTimeout(() => {
+                setTime = 0;
                 msg.classList.remove('sucess');
                 msg.classList.add('error');
                 const toast = new bootstrap.Toast(toastLiveExample)
@@ -297,6 +305,7 @@ const apagaTabela = async () => {
             msg.classList.remove('error');
             msg.classList.add('sucess');
             setTimeout(() => {
+                setTime = 0;
                 msg.classList.remove('sucess');
                 msg.classList.add('error');
                 const toast = new bootstrap.Toast(toastLiveExample)
@@ -313,6 +322,7 @@ const apagaTabela = async () => {
         document.getElementById('btnClose').click();
         alert('API NÃO RESPONDE');
         setTimeout(() => {
+            setTime = 0;
             const toast = new bootstrap.Toast(toastLiveExample)
             document.getElementById('msg').innerText = "API NÃO RESPONDE"
             toast.show(5000)
