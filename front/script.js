@@ -8,6 +8,7 @@ const btnLimpar = document.getElementById('btnApagarTabela');
 const toastTrigger = document.getElementById('liveToastBtn');
 const toastLiveExample = document.getElementById('liveToast');
 document.getElementById("env").disabled = true;
+let int;
 let setTime = 0;
 
 // DECLARACAO DE ARRAYS VAZIOS.
@@ -72,8 +73,10 @@ const ExcelToJSON = function () {
                         msg.classList.remove('sucess')
                         msg.classList.add('error')
                         document.getElementById('msg').innerText = "ERRO: A TABELA SÓ ENVIA NO MAXIMO 500 LINHAS POR VEZ"
+                        document.getElementById('time').innerText = "agora"
                         toast.show(5000)
-                        setInterval(() => {
+                        clearInterval(int)
+                        int = setInterval(() => {
                             setTime++
                             document.getElementById('time').innerText = `${setTime} min`
                         }, 60000)
@@ -169,8 +172,10 @@ const enviaDados = () => {
                     setTime = 0;
                     const toast = new bootstrap.Toast(toastLiveExample)
                     msg.innerText = "Dados Salvos com sucesso"
+                    document.getElementById('time').innerText = "agora"
                     toast.show(5000)
-                    setInterval(() => {
+                    clearInterval(int)
+                    int = setInterval(() => {
                         setTime++
                         document.getElementById('time').innerText = `${setTime} min`
                     }, 60000)
@@ -183,7 +188,9 @@ const enviaDados = () => {
                     const toast = new bootstrap.Toast(toastLiveExample)
                     msg.innerText = "ERRO dados NÃO enviados"
                     toast.show(5000)
-                    setInterval(() => {
+                    document.getElementById('time').innerText = "agora"
+                    clearInterval(int)
+                    int = setInterval(() => {
                         setTime++
                         document.getElementById('time').innerText = `${setTime} min`
                     }, 60000)
@@ -199,7 +206,9 @@ const enviaDados = () => {
                 const toast = new bootstrap.Toast(toastLiveExample)
                 document.getElementById('msg').innerText = "API NÃO RESPONDE"
                 toast.show(5000)
-                setInterval(() => {
+                document.getElementById('time').innerText = "agora"
+                clearInterval(int)
+                int = setInterval(() => {
                     setTime++
                     document.getElementById('time').innerText = `${setTime} min`
                 }, 60000)
@@ -227,7 +236,9 @@ const consultaTabela = async () => {
                 const toast = new bootstrap.Toast(toastLiveExample)
                 document.getElementById('msg').innerText = "A TABELA ESTA VAZIA"
                 toast.show(5000)
-                setInterval(() => {
+                document.getElementById('time').innerText = "agora"
+                clearInterval(int)
+                int = setInterval(() => {
                     setTime++
                     document.getElementById('time').innerText = `${setTime} min`
                 }, 60000)
@@ -240,7 +251,9 @@ const consultaTabela = async () => {
             const toast = new bootstrap.Toast(toastLiveExample)
             document.getElementById('msg').innerText = "API NÃO RESPONDE"
             toast.show(5000)
-            setInterval(() => {
+            document.getElementById('time').innerText = "agora"
+            clearInterval(int)
+            int = setInterval(() => {
                 setTime++
                 document.getElementById('time').innerText = `${setTime} min`
             }, 60000)
@@ -296,7 +309,9 @@ const apagaTabela = async () => {
                 const toast = new bootstrap.Toast(toastLiveExample)
                 msg.innerText = dataJson.message;
                 toast.show(5000)
-                setInterval(() => {
+                document.getElementById('time').innerText = "agora"
+                clearInterval(int)
+                int = setInterval(() => {
                     setTime++
                     document.getElementById('time').innerText = `${setTime} min`
                 }, 60000)
@@ -311,7 +326,9 @@ const apagaTabela = async () => {
                 const toast = new bootstrap.Toast(toastLiveExample)
                 msg.innerText = "ERRO: A tabela NÃO foi limpa.";
                 toast.show(5000)
-                setInterval(() => {
+                document.getElementById('time').innerText = "agora"
+                clearInterval(int)
+                int = setInterval(() => {
                     setTime++
                     document.getElementById('time').innerText = `${setTime} min`
                 }, 60000)
@@ -326,7 +343,9 @@ const apagaTabela = async () => {
             const toast = new bootstrap.Toast(toastLiveExample)
             document.getElementById('msg').innerText = "API NÃO RESPONDE"
             toast.show(5000)
-            setInterval(() => {
+            document.getElementById('time').innerText = "agora"
+            clearInterval(int)
+            int = setInterval(() => {
                 setTime++
                 document.getElementById('time').innerText = `${setTime} min`
             }, 60000)
